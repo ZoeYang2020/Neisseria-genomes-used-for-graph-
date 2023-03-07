@@ -1,0 +1,315 @@
+Starting pggb on 03-07-2023_12:18:25
+
+Command: /usr/local/bin/pggb -i /home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa -s 1000 -p 96 -n 4 -t 48 -S -m -o 4Sim_reorder_pggb0.5.3_1K96_D
+
+PARAMETERS
+
+general:
+  input-fasta:        /home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa
+  output-dir:         4Sim_reorder_pggb0.5.3_1K96_D
+  temp-dir:           4Sim_reorder_pggb0.5.3_1K96_D
+  resume:             false
+  compress:           false
+  threads:            48
+  poa_threads:        48
+wfmash:
+  version:            v0.10.2-0-g2aaba27
+  segment-length:     1000
+  block-length:       5000
+  map-pct-id:         96
+  n-mappings:         4
+  no-splits:          false
+  sparse-map:         false
+  mash-kmer:          19
+  mash-kmer-thres:    0.001
+  exclude-delim:      false
+  no-merge-segments:  false
+seqwish:
+  version:            v0.7.8-0-gf362f6f
+  min-match-len:      19
+  sparse-factor:      0
+  transclose-batch:   10000000
+smoothxg:
+  version:            v0.6.8-27-ge4c1149
+  skip-normalization: false
+  n-haps:             4
+  path-jump-max:      0
+  edge-jump-max:      0
+  poa-length-target:  700,900,1100
+  poa-params:         1,19,39,3,81,1
+  poa_padding:        0.001
+  run_abpoa:          false
+  run_global_poa:     false
+  pad-max-depth:      100
+  write-maf:          false
+  consensus-spec:     false
+  consensus-prefix:   Consensus_
+  block-id-min:       .9600
+  block-ratio-min:    0
+odgi:
+  version:            v0.6.8-27-ge4c1149
+  viz:                true
+  layout:             true
+  stats:              true
+gfaffix:
+  version:            v0.1.4
+  reduce-redundancy:  true
+vg:
+  version:            v1.40.0
+  deconstruct:        false
+reporting:
+  version:            v1.13
+  multiqc:            true
+
+Running pggb
+
+[wfmash::map] Reference = [/home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa]
+[wfmash::map] Query = [/home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 40
+[wfmash::map] Segment length = 1000 (read split allowed)
+[wfmash::map] Block length min = 5000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 96%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /dev/stdout
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 48
+[wfmash::skch::Sketch::build] minimizers picked from reference = 448670
+[wfmash::skch::Sketch::index] unique minimizers = 111103
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (1, 7096) ... (582, 1)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, ignore minimizers occurring >= 582 times during lookup.
+[wfmash::map] time spent computing the reference index: 0.189759 sec
+[wfmash::skch::Map::mapQuery] mapped  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 50.00% @ 8.99e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 8.98e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 3, reads qualified for mapping = 4, total input reads = 4, total input bp = 8995995
+[wfmash::map] time spent mapping the query: 1.01e+00 sec
+[wfmash::map] mapping results saved in: /dev/stdout
+wfmash -s 1000 -l 5000 -p 96 -n 3 -k 19 -H 0.001 -X -t 48 --tmp-base 4Sim_reorder_pggb0.5.3_1K96_D /home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa --approx-map
+3.51s user 0.09s system 294% cpu 1.22s total 74360Kb max memory
+[wfmash::align] Reference = [/home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa]
+[wfmash::align] Query = [/home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa]
+[wfmash::align] Mapping file = 4Sim_reorder_pggb0.5.3_1K96_D/wfmash-6yiDFW
+[wfmash::align] Alignment identity cutoff = 0.768%
+[wfmash::align] Alignment output file = /dev/stdout
+[wfmash::align] time spent loading the reference index: 0.0308732 sec
+[wfmash::align::computeAlignments] aligned  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 65.18% @ 1.76e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 75.70% @ 1.02e+07 bp/s elapsed: 00:00:00:01 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 100.00% @ 2.99e+06 bp/s elapsed: 00:00:00:04 remain: 00:00:00:00
+[wfmash::align::computeAlignments] count of mapped reads = 4, total aligned bp = 13493841
+[wfmash::align] time spent computing the alignment: 4.54e+00 sec
+[wfmash::align] alignment results saved in: /dev/stdout
+wfmash -s 1000 -l 5000 -p 96 -n 3 -k 19 -H 0.001 -X -t 48 --tmp-base 4Sim_reorder_pggb0.5.3_1K96_D /home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.mappings.wfmash.paf --invert-filtering
+15.13s user 0.66s system 346% cpu 4.56s total 326508Kb max memory
+[seqwish::seqidx] 0.001 indexing sequences
+[seqwish::seqidx] 0.155 index built
+[seqwish::alignments] 0.155 processing alignments
+[seqwish::alignments] 0.231 indexing
+[seqwish::alignments] 0.294 index built
+[seqwish::transclosure] 0.305 computing transitive closures
+[seqwish::transclosure] 0.327 0.00% 0-8995995 overlap_collect
+[seqwish::transclosure] 0.850 0.00% 0-8995995 rank_build
+[seqwish::transclosure] 1.026 0.00% 0-8995995 parallel_union_find
+[seqwish::transclosure] 1.205 0.00% 0-8995995 dset_write
+[seqwish::transclosure] 1.359 0.00% 0-8995995 dset_compression
+[seqwish::transclosure] 1.495 0.00% 0-8995995 dset_sort
+[seqwish::transclosure] 1.616 0.00% 0-8995995 dset_invert
+[seqwish::transclosure] 1.756 0.00% 0-8995995 graph_emission
+[seqwish::transclosure] 2.574 100.00% building node_iitree and path_iitree indexes
+[seqwish::transclosure] 2.634 100.00% done
+[seqwish::transclosure] 2.634 done with transitive closures
+[seqwish::compact] 2.634 compacting nodes
+[seqwish::compact] 2.655 done compacting
+[seqwish::compact] 2.659 built node index
+[seqwish::links] 2.659 finding graph links
+[seqwish::links] 2.754 links derived
+[seqwish::gfa] 2.754 writing graph
+[seqwish::gfa] 3.125 done
+seqwish -s /home/zyang/NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder.fa -p 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.alignments.wfmash.paf -k 19 -f 0 -g 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa -B 10000000 -t 48 --temp-dir 4Sim_reorder_pggb0.5.3_1K96_D -P
+23.38s user 1.58s system 789% cpu 3.16s total 542604Kb max memory
+[smoothxg::(1-3)::main] loading graph
+[smoothxg::(1-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  0.10% @ 7.94e+03/s elapsed: 00:00:00:00 remain: 00:00:00:02[odgi::gfa_to_handle] building nodes: 100.00% @ 8.82e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.04% @ 7.25e+02/s elapsed: 00:00:00:00 remain: 00:00:00:45[odgi::gfa_to_handle] building edges: 100.00% @ 1.24e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 6.79e+00/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 1.00e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::prep] building path index
+[smoothxg::(1-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(1-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(1-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (4.45e-09 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.02% @ 1.35e+04/s elapsed: 00:00:00:00 remain: 00:00:07:22[odgi::path_linear_sgd] 1D path-guided SGD: 97.09% @ 1.79e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 1.04e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  0.04% @ 5.75e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 8.85e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles:  0.18% @ 9.39e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 8.86e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 4022 handles
+[odgi::topological_order] sorting nodes:  0.02% @ 2.74e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 54.72% @ 4.86e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 4.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::prep] chopping graph to 100
+[odgi::chop] 4591 node(s) to chop.
+[smoothxg::(1-3)::prep] writing graph 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa.prep.0.gfa
+[smoothxg::(1-3)::main] building xg index
+[smoothxg::(1-3)::smoothable_blocks] computing blocks
+[smoothxg::(1-3)::smoothable_blocks] computing blocks for 40950 handles:  0.06% @ 1.61e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smoothable_blocks] computing blocks for 40950 handles: 79.93% @ 1.31e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smoothable_blocks] computing blocks for 40950 handles: 100.00% @ 8.16e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1400) and depth >= 0
+[smoothxg::(1-3)::break_and_split_blocks] splitting 3418 blocks at identity 0.960 (WFA-based clustering) and at estimated-identity 0.960 (mash-based clustering)
+[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 3418 blocks:  9.68% @ 4.13e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 3418 blocks: 100.00% @ 1.32e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(1-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks:  0.03% @ 9.45e+00/s elapsed: 00:00:00:00 remain: 00:00:06:01[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks:  1.84% @ 1.77e+02/s elapsed: 00:00:00:00 remain: 00:00:00:18[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks:  4.80% @ 2.71e+02/s elapsed: 00:00:00:00 remain: 00:00:00:12[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks:  7.55% @ 3.01e+02/s elapsed: 00:00:00:00 remain: 00:00:00:10[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 10.50% @ 3.24e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 12.11% @ 3.05e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 13.87% @ 2.95e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 15.51% @ 2.85e+02/s elapsed: 00:00:00:01 remain: 00:00:00:10[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 18.20% @ 2.95e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 20.92% @ 3.03e+02/s elapsed: 00:00:00:02 remain: 00:00:00:08[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 22.35% @ 2.93e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 23.90% @ 2.86e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 25.63% @ 2.82e+02/s elapsed: 00:00:00:03 remain: 00:00:00:09[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 28.29% @ 2.88e+02/s elapsed: 00:00:00:03 remain: 00:00:00:08[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 30.60% @ 2.90e+02/s elapsed: 00:00:00:03 remain: 00:00:00:08[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 33.12% @ 2.93e+02/s elapsed: 00:00:00:03 remain: 00:00:00:07[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 35.52% @ 2.96e+02/s elapsed: 00:00:00:04 remain: 00:00:00:07[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 38.53% @ 3.02e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 41.31% @ 3.06e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 44.12% @ 3.10e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 46.72% @ 3.13e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 48.89% @ 3.12e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 50.94% @ 3.10e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 53.72% @ 3.13e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 56.38% @ 3.15e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 59.04% @ 3.17e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 61.94% @ 3.20e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 64.75% @ 3.23e+02/s elapsed: 00:00:00:06 remain: 00:00:00:03[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 67.67% @ 3.25e+02/s elapsed: 00:00:00:07 remain: 00:00:00:03[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 70.42% @ 3.27e+02/s elapsed: 00:00:00:07 remain: 00:00:00:03[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 73.17% @ 3.29e+02/s elapsed: 00:00:00:07 remain: 00:00:00:02[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 76.18% @ 3.31e+02/s elapsed: 00:00:00:07 remain: 00:00:00:02[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 79.49% @ 3.35e+02/s elapsed: 00:00:00:08 remain: 00:00:00:02[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 82.42% @ 3.37e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 85.25% @ 3.38e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 87.86% @ 3.39e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 90.35% @ 3.39e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 92.13% @ 3.36e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 93.74% @ 3.33e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 95.87% @ 3.32e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 98.24% @ 3.32e+02/s elapsed: 00:00:00:10 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 3418 blocks: 100.00% @ 3.30e+02/s elapsed: 00:00:00:10 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 3.52e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(1-3)::smooth_and_lace] adding nodes from 3418 graphs:  0.23% @ 5.72e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding nodes from 3418 graphs: 100.00% @ 1.36e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] adding edges from 3418 graphs:  0.06% @ 1.16e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding edges from 3418 graphs: 100.00% @ 1.36e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] embedding 13683 path fragments:  0.01% @ 1.16e+04/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(1-3)::smooth_and_lace] embedding 13683 path fragments: 43.18% @ 2.36e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] embedding 13683 path fragments: 100.00% @ 2.73e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] validating 4 path sequences: 25.00% @ 1.29e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] validating 4 path sequences: 100.00% @ 1.21e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] walking edges in 4 paths: 25.00% @ 4.44e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] walking edges in 4 paths: 100.00% @ 1.46e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 4473 nodes into 2022 new nodes.
+[smoothxg::(1-3)::main] smoothed graph length 2263490bp in 29930 nodes
+[smoothxg::(1-3)::main] writing smoothed graph to 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa.smooth.0.gfa
+[smoothxg::(2-3)::main] loading graph
+[smoothxg::(2-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  0.05% @ 1.65e+04/s elapsed: 00:00:00:00 remain: 00:00:00:01[odgi::gfa_to_handle] building nodes: 100.00% @ 8.83e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.04% @ 5.08e+02/s elapsed: 00:00:00:00 remain: 00:00:01:04[odgi::gfa_to_handle] building edges: 100.00% @ 1.27e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 50.00% @ 1.36e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 1.00e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::prep] building path index
+[smoothxg::(2-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(2-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(2-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (4.45e-09 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.02% @ 1.36e+04/s elapsed: 00:00:00:00 remain: 00:00:07:20[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 1.59e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  0.10% @ 2.51e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 8.86e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles:  0.70% @ 1.52e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 8.87e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 4022 handles
+[odgi::topological_order] sorting nodes:  0.01% @ 2.39e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 56.30% @ 5.00e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 4.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::prep] chopping graph to 100
+[odgi::chop] 4591 node(s) to chop.
+[smoothxg::(2-3)::prep] writing graph 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa.smooth.0.gfa.prep.1.gfa
+[smoothxg::(2-3)::main] building xg index
+[smoothxg::(2-3)::smoothable_blocks] computing blocks
+[smoothxg::(2-3)::smoothable_blocks] computing blocks for 40950 handles:  0.03% @ 1.75e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smoothable_blocks] computing blocks for 40950 handles: 79.25% @ 1.30e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smoothable_blocks] computing blocks for 40950 handles: 100.00% @ 8.14e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1800) and depth >= 0
+[smoothxg::(2-3)::break_and_split_blocks] splitting 2636 blocks at identity 0.960 (WFA-based clustering) and at estimated-identity 0.960 (mash-based clustering)
+[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 2636 blocks:  9.14% @ 2.81e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 2636 blocks: 100.00% @ 1.02e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(2-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks:  0.04% @ 9.14e+00/s elapsed: 00:00:00:00 remain: 00:00:04:48[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks:  2.24% @ 1.64e+02/s elapsed: 00:00:00:00 remain: 00:00:00:15[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks:  5.16% @ 2.23e+02/s elapsed: 00:00:00:00 remain: 00:00:00:11[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks:  8.00% @ 2.45e+02/s elapsed: 00:00:00:00 remain: 00:00:00:09[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 10.62% @ 2.52e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 12.71% @ 2.46e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 14.49% @ 2.37e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 16.31% @ 2.31e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 19.39% @ 2.42e+02/s elapsed: 00:00:00:02 remain: 00:00:00:08[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 21.17% @ 2.36e+02/s elapsed: 00:00:00:02 remain: 00:00:00:08[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 23.03% @ 2.32e+02/s elapsed: 00:00:00:02 remain: 00:00:00:08[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 24.92% @ 2.30e+02/s elapsed: 00:00:00:02 remain: 00:00:00:08[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 27.12% @ 2.30e+02/s elapsed: 00:00:00:03 remain: 00:00:00:08[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 30.05% @ 2.36e+02/s elapsed: 00:00:00:03 remain: 00:00:00:07[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 32.28% @ 2.36e+02/s elapsed: 00:00:00:03 remain: 00:00:00:07[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 35.62% @ 2.43e+02/s elapsed: 00:00:00:03 remain: 00:00:00:06[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 38.13% @ 2.44e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 40.93% @ 2.47e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 43.40% @ 2.48e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 46.32% @ 2.51e+02/s elapsed: 00:00:00:04 remain: 00:00:00:05[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 48.75% @ 2.51e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 51.10% @ 2.51e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 53.83% @ 2.53e+02/s elapsed: 00:00:00:05 remain: 00:00:00:04[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 57.09% @ 2.57e+02/s elapsed: 00:00:00:05 remain: 00:00:00:04[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 59.83% @ 2.58e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 62.41% @ 2.59e+02/s elapsed: 00:00:00:06 remain: 00:00:00:03[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 65.33% @ 2.60e+02/s elapsed: 00:00:00:06 remain: 00:00:00:03[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 68.47% @ 2.63e+02/s elapsed: 00:00:00:06 remain: 00:00:00:03[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 70.52% @ 2.61e+02/s elapsed: 00:00:00:07 remain: 00:00:00:02[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 73.90% @ 2.65e+02/s elapsed: 00:00:00:07 remain: 00:00:00:02[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 76.67% @ 2.65e+02/s elapsed: 00:00:00:07 remain: 00:00:00:02[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 80.01% @ 2.68e+02/s elapsed: 00:00:00:07 remain: 00:00:00:01[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 82.55% @ 2.68e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 84.98% @ 2.68e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 87.59% @ 2.68e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 90.29% @ 2.68e+02/s elapsed: 00:00:00:08 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 92.15% @ 2.66e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 93.85% @ 2.64e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 96.02% @ 2.63e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 98.52% @ 2.63e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 2636 blocks: 100.00% @ 2.61e+02/s elapsed: 00:00:00:10 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 3.39e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(2-3)::smooth_and_lace] adding nodes from 2636 graphs:  0.27% @ 5.52e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding nodes from 2636 graphs: 100.00% @ 1.05e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] adding edges from 2636 graphs:  0.19% @ 3.70e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding edges from 2636 graphs: 100.00% @ 1.05e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] embedding 10549 path fragments:  0.01% @ 4.56e+03/s elapsed: 00:00:00:00 remain: 00:00:00:02[smoothxg::(2-3)::smooth_and_lace] embedding 10549 path fragments: 35.99% @ 1.52e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] embedding 10549 path fragments: 100.00% @ 2.11e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] validating 4 path sequences: 25.00% @ 2.36e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] validating 4 path sequences: 100.00% @ 1.36e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] walking edges in 4 paths: 25.00% @ 4.93e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] walking edges in 4 paths: 100.00% @ 1.48e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 3606 nodes into 1704 new nodes.
+[smoothxg::(2-3)::main] smoothed graph length 2263231bp in 30037 nodes
+[smoothxg::(2-3)::main] writing smoothed graph to 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa.smooth.1.gfa
+[smoothxg::(3-3)::main] loading graph
+[smoothxg::(3-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  0.05% @ 7.23e+03/s elapsed: 00:00:00:00 remain: 00:00:00:03[odgi::gfa_to_handle] building nodes: 100.00% @ 8.79e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.07% @ 2.04e+03/s elapsed: 00:00:00:00 remain: 00:00:00:16[odgi::gfa_to_handle] building edges: 100.00% @ 1.28e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 9.00e+00/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 1.11e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::prep] building path index
+[smoothxg::(3-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(3-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(3-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (4.45e-09 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.07% @ 5.22e+04/s elapsed: 00:00:00:00 remain: 00:00:01:54[odgi::path_linear_sgd] 1D path-guided SGD: 81.21% @ 1.49e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 1.03e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  0.10% @ 1.72e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 8.87e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles:  0.44% @ 6.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 8.87e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 4022 handles
+[odgi::topological_order] sorting nodes:  0.01% @ 1.33e+04/s elapsed: 00:00:00:00 remain: 00:00:00:01[odgi::topological_order] sorting nodes: 54.48% @ 4.82e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 4.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::prep] chopping graph to 100
+[odgi::chop] 4591 node(s) to chop.
+[smoothxg::(3-3)::prep] writing graph 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa.smooth.1.gfa.prep.2.gfa
+[smoothxg::(3-3)::main] building xg index
+[smoothxg::(3-3)::smoothable_blocks] computing blocks
+[smoothxg::(3-3)::smoothable_blocks] computing blocks for 40950 handles:  0.04% @ 1.35e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smoothable_blocks] computing blocks for 40950 handles: 77.23% @ 1.26e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smoothable_blocks] computing blocks for 40950 handles: 100.00% @ 8.14e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (2200) and depth >= 0
+[smoothxg::(3-3)::break_and_split_blocks] splitting 2144 blocks at identity 0.960 (WFA-based clustering) and at estimated-identity 0.960 (mash-based clustering)
+[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 2144 blocks: 52.33% @ 6.18e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 2144 blocks: 100.00% @ 7.98e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(3-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks:  0.05% @ 1.37e+01/s elapsed: 00:00:00:00 remain: 00:00:02:36[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks:  1.77% @ 1.18e+02/s elapsed: 00:00:00:00 remain: 00:00:00:17[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks:  4.85% @ 1.81e+02/s elapsed: 00:00:00:00 remain: 00:00:00:11[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks:  7.37% @ 1.92e+02/s elapsed: 00:00:00:00 remain: 00:00:00:10[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 10.21% @ 2.04e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 11.89% @ 1.93e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 13.71% @ 1.87e+02/s elapsed: 00:00:00:01 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 15.07% @ 1.77e+02/s elapsed: 00:00:00:01 remain: 00:00:00:10[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 18.00% @ 1.86e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 20.15% @ 1.86e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 21.97% @ 1.83e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 23.79% @ 1.80e+02/s elapsed: 00:00:00:02 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 25.05% @ 1.74e+02/s elapsed: 00:00:00:03 remain: 00:00:00:09[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 27.19% @ 1.75e+02/s elapsed: 00:00:00:03 remain: 00:00:00:08[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 30.22% @ 1.81e+02/s elapsed: 00:00:00:03 remain: 00:00:00:08[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 32.46% @ 1.82e+02/s elapsed: 00:00:00:03 remain: 00:00:00:07[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 35.21% @ 1.85e+02/s elapsed: 00:00:00:04 remain: 00:00:00:07[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 37.83% @ 1.87e+02/s elapsed: 00:00:00:04 remain: 00:00:00:07[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 40.86% @ 1.91e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 43.42% @ 1.93e+02/s elapsed: 00:00:00:04 remain: 00:00:00:06[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 45.85% @ 1.94e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 48.09% @ 1.93e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 49.91% @ 1.92e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 52.85% @ 1.94e+02/s elapsed: 00:00:00:05 remain: 00:00:00:05[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 55.22% @ 1.95e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 57.18% @ 1.94e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 59.56% @ 1.94e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 62.08% @ 1.95e+02/s elapsed: 00:00:00:06 remain: 00:00:00:04[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 65.58% @ 1.99e+02/s elapsed: 00:00:00:07 remain: 00:00:00:03[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 68.33% @ 2.00e+02/s elapsed: 00:00:00:07 remain: 00:00:00:03[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 71.13% @ 2.01e+02/s elapsed: 00:00:00:07 remain: 00:00:00:03[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 74.25% @ 2.03e+02/s elapsed: 00:00:00:07 remain: 00:00:00:02[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 76.82% @ 2.04e+02/s elapsed: 00:00:00:08 remain: 00:00:00:02[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 79.38% @ 2.04e+02/s elapsed: 00:00:00:08 remain: 00:00:00:02[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 82.09% @ 2.05e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 85.45% @ 2.07e+02/s elapsed: 00:00:00:08 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 87.64% @ 2.07e+02/s elapsed: 00:00:00:09 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 90.30% @ 2.07e+02/s elapsed: 00:00:00:09 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 92.16% @ 2.06e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 94.03% @ 2.05e+02/s elapsed: 00:00:00:09 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 95.90% @ 2.04e+02/s elapsed: 00:00:00:10 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 98.93% @ 2.05e+02/s elapsed: 00:00:00:10 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 2144 blocks: 100.00% @ 2.03e+02/s elapsed: 00:00:00:10 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 4.25e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(3-3)::smooth_and_lace] adding nodes from 2144 graphs:  0.28% @ 2.83e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding nodes from 2144 graphs: 100.00% @ 8.54e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] adding edges from 2144 graphs:  0.05% @ 1.37e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding edges from 2144 graphs: 100.00% @ 8.55e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] embedding 8581 path fragments:  0.01% @ 4.85e+03/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] embedding 8581 path fragments: 44.60% @ 1.53e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] embedding 8581 path fragments: 100.00% @ 1.71e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] validating 4 path sequences: 25.00% @ 1.72e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] validating 4 path sequences: 100.00% @ 1.29e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] walking edges in 4 paths: 25.00% @ 4.05e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] walking edges in 4 paths: 100.00% @ 1.45e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 3012 nodes into 1462 new nodes.
+[smoothxg::(3-3)::main] smoothed graph length 2263404bp in 29938 nodes
+[smoothxg::(3-3)::main] writing smoothed graph to 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.gfa
+smoothxg -t 48 -T 48 -g 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa -r 4 --base 4Sim_reorder_pggb0.5.3_1K96_D --chop-to 100 -I .9600 -R 0 -j 0 -e 0 -l 700,900,1100 -P 1,19,39,3,81,1 -O 0.001 -Y 400 -d 0 -D 0 -Q Consensus_ -V -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.gfa
+634.45s user 678.24s system 2373% cpu 55.30s total 1690364Kb max memory
+gfaffix 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.gfa -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.fix.gfa
+0.18s user 0.03s system 94% cpu 0.23s total 29840Kb max memory
+pigz
+0.00s user 0.00s system 2% cpu 0.24s total 1060Kb max memory
+[odgi::gfa_to_handle] building nodes:  0.01% @ 1.77e+02/s elapsed: 00:00:00:00 remain: 00:00:02:49[odgi::gfa_to_handle] building nodes: 100.00% @ 1.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.02% @ 1.61e+02/s elapsed: 00:00:00:00 remain: 00:00:04:08[odgi::gfa_to_handle] building edges: 100.00% @ 1.53e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 5.49e+00/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 9.24e+00/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi build -t 48 -P -g 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.fix.gfa -o - -O
+1.48s user 0.19s system 115% cpu 1.45s total 33732Kb max memory
+[odgi::unchop] unchopped 29 nodes into 14 new nodes.
+odgi unchop -P -t 48 -i - -o -
+4.58s user 0.30s system 228% cpu 2.14s total 116068Kb max memory
+path_sgd_zipf_space_max: 100
+path_sgd_zipf_max_number_of_distributions: 101
+[odgi::path_linear_sgd] calculating linear SGD schedule (2.48928e-09 1 100 0 0.01)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.01% @ 1.31e+04/s elapsed: 00:00:00:00 remain: 00:00:10:10[odgi::path_linear_sgd] 1D path-guided SGD: 72.72% @ 1.75e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 1.37e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  0.10% @ 2.23e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 1.19e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles:  0.21% @ 1.79e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 1.19e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 6280 handles
+[odgi::topological_order] sorting nodes:  0.02% @ 2.87e+04/s elapsed: 00:00:00:00 remain: 00:00:00:01[odgi::topological_order] sorting nodes: 40.89% @ 4.89e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 81.37% @ 4.86e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 3.98e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi sort -P -p Ygs --temp-dir 4Sim_reorder_pggb0.5.3_1K96_D -t 48 -i - -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og
+26.41s user 0.19s system 517% cpu 5.14s total 113788Kb max memory
+odgi view -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -g
+0.21s user 0.07s system 94% cpu 0.30s total 16148Kb max memory
+[odgi::gfa_to_handle] building nodes:  0.04% @ 8.20e+03/s elapsed: 00:00:00:00 remain: 00:00:00:02[odgi::gfa_to_handle] building nodes: 100.00% @ 8.86e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.02% @ 1.42e+02/s elapsed: 00:00:00:00 remain: 00:00:03:51[odgi::gfa_to_handle] building edges: 100.00% @ 1.21e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 5.95e+00/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 9.56e+00/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi build -t 48 -P -g 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.gfa -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.seqwish.og
+1.17s user 0.28s system 129% cpu 1.12s total 28664Kb max memory
+odgi viz -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.viz_multiqc.png -x 1500 -y 500 -a 10 -I Consensus_
+0.35s user 0.02s system 98% cpu 0.38s total 24444Kb max memory
+odgi viz -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.viz_pos_multiqc.png -x 1500 -y 500 -a 10 -u -d -I Consensus_
+2.92s user 0.01s system 99% cpu 2.94s total 29404Kb max memory
+odgi viz -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.viz_depth_multiqc.png -x 1500 -y 500 -a 10 -m -I Consensus_
+3.00s user 0.01s system 96% cpu 3.13s total 24428Kb max memory
+odgi viz -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.viz_inv_multiqc.png -x 1500 -y 500 -a 10 -z -I Consensus_
+2.79s user 0.02s system 98% cpu 2.86s total 28376Kb max memory
+odgi viz -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.viz_O_multiqc.png -x 1500 -y 500 -a 10 -O -I Consensus_
+2.06s user 0.02s system 97% cpu 2.13s total 23760Kb max memory
+odgi viz -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.viz_uncalled_multiqc.png -x 1500 -y 500 -a 10 -N -I Consensus_
+2.56s user 0.02s system 98% cpu 2.61s total 24284Kb max memory
+[odgi::path_linear_sgd_layout] 2D path-guided SGD:  0.00% @ 1.03e+04/s elapsed: 00:00:00:00 remain: 00:00:38:56[odgi::path_linear_sgd_layout] 2D path-guided SGD: 19.28% @ 1.33e+07/s elapsed: 00:00:00:00 remain: 00:00:00:01[odgi::path_linear_sgd_layout] 2D path-guided SGD: 41.61% @ 1.67e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd_layout] 2D path-guided SGD: 64.93% @ 1.84e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd_layout] 2D path-guided SGD: 89.10% @ 1.95e+07/s elapsed: 00:00:00:01 remain: 00:00:00:00[odgi::path_linear_sgd_layout] 2D path-guided SGD: 100.00% @ 1.78e+07/s elapsed: 00:00:00:01 remain: 00:00:00:00
+odgi layout -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -o 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.lay -T 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.lay.tsv -t 48 --temp-dir 4Sim_reorder_pggb0.5.3_1K96_D -P
+60.50s user 0.21s system 2509% cpu 2.42s total 39016Kb max memory
+odgi draw -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -c 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.lay -p 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.lay.draw.png -H 1000
+6.33s user 0.25s system 113% cpu 5.82s total 241432Kb max memory
+odgi draw -i 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og -c 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.lay -p 4Sim_reorder_pggb0.5.3_1K96_D/4Sim_reorder.fa.97e7156.417fcdf.7659dc8.smooth.final.og.lay.draw_multiqc.png -C -w 20 -H 1000
+8.21s user 0.31s system 115% cpu 7.41s total 296676Kb max memory
+
+  /// MultiQC 🔍 | v1.13
+
+|           multiqc | MultiQC Version v1.14 now available!
+|           multiqc | Not cleaning sample names
+|           multiqc | Search path : /NGS/active/IPL/MENINGO/analysis/graph_genome/pggb_0.5.3/4Sim_reorder_pggb0.5.3_1K96_D
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 26/26  
+|              odgi | Found 2 reports
+|    custom_content | odgi_O: Found 1 sample (image)
+|    custom_content | odgi_viz: Found 1 sample (image)
+|    custom_content | odgi_viz_pos: Found 1 sample (image)
+|    custom_content | odgi_viz_inv: Found 1 sample (image)
+|    custom_content | odgi_viz_depth: Found 1 sample (image)
+|    custom_content | odgi_viz_uncalled: Found 1 sample (image)
+|    custom_content | odgi_draw: Found 1 sample (image)
+|           multiqc | Compressing plot data
+|           multiqc | Report      : 4Sim_reorder_pggb0.5.3_1K96_D/multiqc_report.html
+|           multiqc | Data        : 4Sim_reorder_pggb0.5.3_1K96_D/multiqc_data
+|           multiqc | MultiQC complete
+multiqc 4Sim_reorder_pggb0.5.3_1K96_D -s -o 4Sim_reorder_pggb0.5.3_1K96_D -c 4Sim_reorder_pggb0.5.3_1K96_D/multiqc_config.yaml
+9.18s user 3.17s system 77% cpu 16.03s total 85256Kb max memory
